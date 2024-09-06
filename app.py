@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     env_vars = os.environ
-    colour = env_vars.get('COLOUR', '#FFFFFF')  # Default to white if not set
+    colour = env_vars.get('colour', '#FFFFFF')  # Default to white if not set
     env_table = ''.join([f'<tr><td>{k}</td><td>{v}</td></tr>' for k, v in env_vars.items()])
     return f'''
     <html>
