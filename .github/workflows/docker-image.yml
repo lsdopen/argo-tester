@@ -1,0 +1,26 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    tags:
+      - '*'  # Triggers on any tag
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Build and push Docker image
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}
+        docker build -t ghcr.io/${{ github.repository }}/webserver:${TAG_NAME} .
+        docker push ghcr.io/${{ github.repository }}/webserver:${TAG_NAME}
