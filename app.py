@@ -57,6 +57,7 @@ def index():
     </head>
     <body>
         <div class="container">
+            <h1>Howdy!</h1>
             <h2>Environment Variables</h2>
             <table>
                 <tr><th>Key</th><th>Value</th></tr>
