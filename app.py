@@ -60,6 +60,7 @@ def index():
             <h2>Environment Variables</h2>
             <table>
                 <tr><th>Key</th><th>Value</th></tr>
+                <tr><td>Version</td><td>v1</td></tr>
                 <tr><td>Database Password</td><td>{env_vars['Database Password']}</td></tr>
                 <tr><td>Database URL</td><td>{env_vars['Database URL']}</td></tr>
                 <tr><td>Database Username</td><td>{env_vars['Database Username']}</td></tr>
